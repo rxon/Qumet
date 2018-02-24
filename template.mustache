@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <meta name="author" content="rxon">
+  <meta name="copyright" content="Copyright(c)rxon. 2017 All Rights Reserved.">
+  <meta name="description" content="{{description}}">
+  <meta name="format-detection" content="telephone=no,address=no,email=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:url" content="{{{url}}}">
+  <meta property="og:image" content="{{{fbimg}}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{{twimg}}}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{{twaccount}}}">
+  <link href="{{{icon}}}" rel="shortcut icon">
+  <link href="{{{icon}}}" rel="image_src">
+  <link href="{{{icon}}}" rel="icon" type="image/png">
+  <link href="{{{icon}}}" rel="apple-touch-icon">
+  <link href="./public/style.css" rel="stylesheet">
+  <script>
+    function countLength() {
+      let form = document.form.elements;
+      let remainText = 135 - form.question.value.length - form.id.value.length;
+      document.querySelector("#count").innerText = remainText;
+      if ((remainText === 135) || (remainText < 0)) {
+        form.action.disabled = true;
+      } else {
+        form.action.disabled = false;
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <article>
+    <h1>Qumet</h1>
+    <p>全く新しいミニマムな匿名質問メンションサービス</p>
+    <form name="form" action="/" method="post">
+      <label>@
+        <input type="text" name="id" onkeyup="countLength();" pattern="^[0-9a-zA-Z_]{1,15}" placeholder="相手のid(英数字、アンダーバー)"
+          autofocus="" required="">
+      </label>
+      <label><div>Q:</div>
+        <textarea name="question" onkeyup="countLength();" placeholder="質問文（計135文字以下）" autocapitalize="sentences" autocomplete="on"
+          autocorrect="on" required=""></textarea>
+      </label>
+      <div class="sender">
+        <span id="count">135</span>
+        <button type="submit" name="action" value="send" disabled="">Qumet!</button>
+      </div>
+    </form>
+  </article>
+</body>
+
+</html>

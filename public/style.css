@@ -1,0 +1,105 @@
+body,
+button {
+  font-family: -apple-system, Avenir Next, YuGo-Medium, YuGothic-Medium, NotoSansCJKjp-DemiLight, Hiragino Sans, メイリオ, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.7;
+  letter-spacing: .03rem;
+  font-kerning: normal;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  max-width: 25em;
+  margin: 2em auto;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+h1:after {
+  content: '';
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  background-image: url(icon.png);
+  background-size: contain;
+  vertical-align: middle;
+  margin-left: .2em;
+  padding-top: .1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding: .3em;
+  margin-bottom: 1.2em;
+  border-radius: .2em;
+  box-shadow: 3px 3px 8px #c1c1c1;
+}
+
+label:first-child {
+  width: 17em;
+}
+
+label:nth-child(2) {
+  display: flex;
+  align-items: baseline;
+}
+
+input,
+textarea {
+  margin: 0;
+  font-size: .9em;
+  outline: none;
+  border: none;
+}
+
+input {
+  width: 17em;
+}
+
+textarea {
+  width: 99%;
+  height: 9em;
+  border: none;
+  resize: none;
+  outline: none;
+}
+
+input:valid {
+  border-bottom: 1px solid #7bdaff
+}
+
+::-webkit-input-placeholder {
+  line-height: 1em;
+  color: #c1c1c1;
+}
+
+.sender {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+button {
+  margin: 1em;
+  margin-right: 0;
+  padding: .8em .6em;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #3875da;
+  font-size: .75em;
+  line-height: 1em;
+  box-shadow: 2px 2px 8px #c1c1c1;
+}
+
+button:disabled{
+  background-color: #c1d1ec;
+}
