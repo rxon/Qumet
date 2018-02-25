@@ -1,7 +1,7 @@
 {
   "name": "Qumet",
   "version": "0.1.0",
-  "description": "",
+  "description": "全く新しいミニマムな匿名質問メンションサービス",
   "license": "MIT",
   "repository": "rxon/Qumet",
   "author": {
@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "prettier --single-quote --write '*.js'",
-    "deploy": "now --docker --public --dotenv"
+    "deploy": "now --public --dotenv"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -20,9 +20,7 @@
     "helmet": "^3.4.0",
     "morgan": "^1.8.1",
     "mustache": "^2.3.0",
-    "next": "^4.2.3",
     "twit": "^2.2.9",
-    "twitter-text": "^2.0.2",
     "validator": "^9.2.0"
   },
   "devDependencies": {

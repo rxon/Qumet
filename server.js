@@ -1,6 +1,5 @@
 'use strict';
 const fs = require('fs');
-const path = require('path');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const express = require('express');
@@ -32,10 +31,10 @@ app.get('/', function(req, res) {
   res.render('template', {
     title: 'Qumet - 匿名質問メンションサービス',
     url: 'qumet.now.sh',
-    description: '',
-    fbimg: '',
-    twimg: '',
-    twaccount: '',
+    description: '全く新しいミニマムな匿名質問メンションサービス',
+    fbimg: './public/icon2.png',
+    twimg: './public/icon2.png',
+    twaccount: '@qumet',
     icon: './public/icon.png'
   });
 });
