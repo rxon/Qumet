@@ -22,13 +22,12 @@ h1 {
 h1:after {
   content: '';
   display: inline-block;
-  width: 1.3em;
-  height: 1.3em;
+  width: 1.5em;
+  height: 1.5em;
+  background-position: 0em -0.07em;
   background-image: url(icon.png);
   background-size: contain;
   vertical-align: middle;
-  margin-left: .2em;
-  padding-top: .1em;
 }
 
 form {
@@ -96,10 +95,10 @@ button {
   color: #fff;
   background-color: #3875da;
   font-size: .75em;
-  line-height: 1em;
+  line-height: .8em;
   box-shadow: 2px 2px 8px #c1c1c1;
 }
 
-button:disabled{
+button:disabled {
   background-color: #c1d1ec;
 }

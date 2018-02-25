@@ -30,14 +30,14 @@
     function countLength() {
       let form = document.form.elements;
       let remainText = 135 - form.question.value.length - form.id.value.length;
+      let areValid = form.id.validity.valid && form.question.validity.valid;
       document.querySelector("#count").innerText = remainText;
-      if ((remainText === 135) || (remainText < 0)) {
+      if (!areValid || (remainText === 135) || (remainText < 0)) {
         form.action.disabled = true;
       } else {
         form.action.disabled = false;
       }
     }
-
   </script>
 </head>
 
