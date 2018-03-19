@@ -1,4 +1,5 @@
 # build output
+public/style.min.css
 
 # dependencies
 node_modules
@@ -8,3 +9,4 @@ npm-debug.log
 yarn-error.log
 
 # other
+.env

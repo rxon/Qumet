@@ -4,14 +4,14 @@ button {
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.7;
-  letter-spacing: .03rem;
-  font-kerning: normal;
-  color: #333;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   max-width: 25em;
   margin: 2em auto;
   padding: 1em;
+  letter-spacing: .03rem;
+  color: #333;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1 {
@@ -20,14 +20,14 @@ h1 {
 }
 
 h1:after {
-  content: '';
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
-  background-position: 0em -0.07em;
-  background-image: url(icon.png);
-  background-size: contain;
+  content: '';
   vertical-align: middle;
+  background-image: url(icon.png);
+  background-position: 0 -.07em;
+  background-size: contain;
 }
 
 form {
@@ -36,8 +36,8 @@ form {
 }
 
 label {
-  padding: .3em;
   margin-bottom: 1.2em;
+  padding: .3em;
   border-radius: .2em;
   box-shadow: 3px 3px 8px #c1c1c1;
 }
@@ -53,10 +53,10 @@ label:nth-child(2) {
 
 input,
 textarea {
-  margin: 0;
   font-size: .9em;
-  outline: none;
+  margin: 0;
   border: none;
+  outline: none;
 }
 
 input {
@@ -66,13 +66,13 @@ input {
 textarea {
   width: 99%;
   height: 9em;
-  border: none;
   resize: none;
+  border: none;
   outline: none;
 }
 
 input:valid {
-  border-bottom: 1px solid #7bdaff
+  border-bottom: 1px solid #7bdaff;
 }
 
 ::-webkit-input-placeholder {
@@ -87,15 +87,15 @@ input:valid {
 }
 
 button {
+  font-size: .75em;
+  line-height: .8em;
   margin: 1em;
   margin-right: 0;
   padding: .8em .6em;
+  color: #fff;
   border: none;
   border-radius: 3px;
-  color: #fff;
   background-color: #3875da;
-  font-size: .75em;
-  line-height: .8em;
   box-shadow: 2px 2px 8px #c1c1c1;
 }
 

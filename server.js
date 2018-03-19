@@ -1,10 +1,11 @@
 'use strict';
 const fs = require('fs');
+const Twit = require('twit');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const express = require('express');
 const mustache = require('mustache');
-const sanitize = require('validator').sanitize;
+const sanitize = require('validator').escape;
 
 const app = express();
 app.engine('mustache', (filePath, options, callback) => {
@@ -40,37 +41,33 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  // require('dotenv').config();
-  // const twit = new Twit({
-  //   consumer_key: process.env.consumerKey,
-  //   consumer_secret: process.env.consumerSecret,
-  //   access_token: '...',
-  //   access_token_secret: '...',
-  //   timeout_ms: 60 * 1000
-  // });
+  require('dotenv').config();
+  const twit = new Twit({
+    consumer_key: process.env.consumerKey,
+    consumer_secret: process.env.consumerSecret,
+    access_token: process.env.accessToken,
+    access_token_secret: process.env.accessTokenSecret,
+    timeout_ms: 60 * 1000
+  });
 
-  const reqId = sanitize(req.body.id).entityEncode();
-  const reqQuestion = sanitize(req.body.question).entityEncode();
+  const reqId = sanitize(req.body.id);
+  const reqQuestion = sanitize(req.body.question);
   const qumet = `@${reqId} Q:${reqQuestion}`;
+
   const checkLength = 140 >= qumet.length && qumet.length > 0;
   const checkRequire = reqId && reqQuestion;
   const checkPattern = reqId.match(/^[0-9a-zA-Z_]{1,15}/);
   if (checkLength && checkRequire && checkPattern) {
-    // twit.post(
-    //   'statuses/update',
-    //   {
-    //     status: qumet
-    //   },
-    //   function(err, data, response) {
-    //     console.log(data);
-    //   }
-    // );
-    //redirect
-    res.send(qumet);
-  } else {
-    res.send('error');
+    twit.post(
+      'statuses/update',
+      {
+        status: qumet
+      },
+      function(err, data, response) {
+        res.redirect('https://twitter.com/Qumet/status/' + data.id_str);
+      }
+    );
   }
-  // res.send(`@${reqId} Q:${reqQuestion}`);
 });
 
 if (!module.parent) {
