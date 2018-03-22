@@ -38,31 +38,53 @@
         form.action.disabled = false;
       }
     }
+
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65643430-10"></script>
   <script>
-    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
-    ga('create', 'UA-65643430-10', 'auto');
-    ga('require', 'outboundFormTracker', {
-      shouldTrackOutboundForm: function () {
-        return true;
-      }
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-65643430-10');
+    const formElement = document.querySelector('form');
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+      formElement.addEventListener('submit', function (event) {
+        event.preventDefault();
+        setTimeout(submitForm, 1000);
+        let formSubmitted = false;
+
+        function submitForm() {
+          if (!formSubmitted) {
+            formSubmitted = true;
+            formElement.submit();
+          }
+        }
+        gtag('event', 'send_form', {
+          'id': document.form.elements.id.value,
+          'question': document.form.elements.question.value,
+          'event_callback': submitForm()
+        });
+      });
     });
-    ga('send', 'pageview');
+
   </script>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
-  <script async src="./public/autotrack.js"></script>
 </head>
 
 <body>
   <article>
     <h1>Qumet</h1>
     <p>全く新しいミニマムな匿名質問メンションサービス</p>
-    <form name="form" action="/" method="post">
+    <form name="form" action="/" method="post" onsubmit="">
       <label>@
-        <input type="text" name="id" onkeyup="countLength();" pattern="^[0-9a-zA-Z_]{1,15}" placeholder="相手のid(英数字、アンダーバー)"
-          autofocus="" required="">
+        <input type="text" name="id" onkeyup="countLength();" pattern="^[0-9a-zA-Z_]{1,15}" placeholder="相手のid(英数字、アンダーバー)" autofocus=""
+          required="">
       </label>
-      <label><div>Q:</div>
+      <label>
+        <div>Q:</div>
         <textarea name="question" onkeyup="countLength();" placeholder="質問文（計135文字以下）" autocapitalize="sentences" autocomplete="on"
           autocorrect="on" required=""></textarea>
       </label>

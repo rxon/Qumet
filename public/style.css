@@ -1,6 +1,6 @@
 body,
 button {
-  font-family: -apple-system, Avenir Next, YuGo-Medium, YuGothic-Medium, NotoSansCJKjp-DemiLight, Hiragino Sans, メイリオ, sans-serif;
+  font-family: Avenir Next, YuGo-Medium, YuGothic-Medium, NotoSansCJKjp-DemiLight, Hiragino Sans, メイリオ, sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.7;
@@ -60,7 +60,7 @@ textarea {
 }
 
 input {
-  width: 17em;
+  width: 90%;
 }
 
 textarea {
