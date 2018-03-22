@@ -26,20 +26,6 @@
   <link href="{{{icon}}}" rel="icon" type="image/png">
   <link href="{{{icon}}}" rel="apple-touch-icon">
   <link href="./public/style.min.css" rel="stylesheet">
-  <script>
-    function countLength() {
-      let form = document.form.elements;
-      let remainText = 135 - form.question.value.length - form.id.value.length;
-      let areValid = form.id.validity.valid && form.question.validity.valid;
-      document.querySelector("#count").innerText = remainText;
-      if (!areValid || (remainText === 135) || (remainText < 0)) {
-        form.action.disabled = true;
-      } else {
-        form.action.disabled = false;
-      }
-    }
-
-  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65643430-10"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -49,27 +35,24 @@
     }
     gtag('js', new Date());
     gtag('config', 'UA-65643430-10');
-    const formElement = document.querySelector('form');
 
-    document.addEventListener("DOMContentLoaded", function (event) {
-      formElement.addEventListener('submit', function (event) {
-        event.preventDefault();
-        setTimeout(submitForm, 1000);
-        let formSubmitted = false;
-
-        function submitForm() {
-          if (!formSubmitted) {
-            formSubmitted = true;
-            formElement.submit();
-          }
-        }
-        gtag('event', 'send_form', {
-          'id': document.form.elements.id.value,
-          'question': document.form.elements.question.value,
-          'event_callback': submitForm()
-        });
+    function sendGaEvent() {
+      gtag('event', 'send_form', {
+        'event_label': document.form.elements.id.value
       });
-    });
+    }
+
+    function countLength() {
+      let form = document.form.elements;
+      let remainText = 135 - form.question.value.length - form.id.value.length;
+      let areValid = form.id.validity.valid && form.question.validity.valid;
+      document.querySelector('#count').innerText = remainText;
+      if (!areValid || remainText === 135 || remainText < 0) {
+        form.action.disabled = true;
+      } else {
+        form.action.disabled = false;
+      }
+    }
 
   </script>
 </head>
@@ -78,7 +61,7 @@
   <article>
     <h1>Qumet</h1>
     <p>全く新しいミニマムな匿名質問メンションサービス</p>
-    <form name="form" action="/" method="post" onsubmit="">
+    <form name="form" action="/" method="post" onsubmit="sendGaEvent();">
       <label>@
         <input type="text" name="id" onkeyup="countLength();" pattern="^[0-9a-zA-Z_]{1,15}" placeholder="相手のid(英数字、アンダーバー)" autofocus=""
           required="">
