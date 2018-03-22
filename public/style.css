@@ -42,8 +42,10 @@ label {
   box-shadow: 3px 3px 8px #c1c1c1;
 }
 
-label:first-child {
-  width: 17em;
+@media (min-width: 544px) {
+  label:first-child {
+    width: 17em;
+  }
 }
 
 label:nth-child(2) {
@@ -53,7 +55,6 @@ label:nth-child(2) {
 
 input,
 textarea {
-  font-size: .9em;
   margin: 0;
   border: none;
   outline: none;
@@ -76,6 +77,7 @@ input:valid {
 }
 
 ::-webkit-input-placeholder {
+  font-size: 1.3em;
   line-height: 1em;
   color: #c1c1c1;
 }

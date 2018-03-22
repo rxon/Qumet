@@ -64,6 +64,10 @@ app.post('/', function(req, res) {
         status: qumet
       },
       function(err, data, response) {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        }
         res.redirect('https://twitter.com/Qumet/status/' + data.id_str);
       }
     );
