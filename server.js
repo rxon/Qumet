@@ -23,7 +23,7 @@ app.use('/public', express.static('public'));
 app.use(
   morgan('combined', {
     skip: function(req, res) {
-      return res.statusCode < 400 || req.method === 'GET';
+      return res.statusCode < 400 && req.method === 'GET';
     }
   })
 );
