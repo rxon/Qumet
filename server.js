@@ -20,7 +20,13 @@ app.engine('mustache', (filePath, options, callback) => {
 app.set('view engine', 'mustache');
 app.set('views', __dirname);
 app.use('/public', express.static('public'));
-app.use(morgan('dev'));
+app.use(
+  morgan('combined', {
+    skip: function(req, res) {
+      return res.statusCode < 400 || req.method === 'GET';
+    }
+  })
+);
 app.use(helmet());
 app.use(
   require('body-parser').urlencoded({
@@ -33,10 +39,10 @@ app.get('/', function(req, res) {
     title: 'Qumet - 匿名質問メンションサービス',
     url: 'qumet.now.sh',
     description: '全く新しいミニマムな匿名質問メンションサービス',
-    fbimg: './public/icon2.png',
-    twimg: './public/icon2.png',
+    fbimg: 'https://qumet.now.sh/public/icon2.png',
+    twimg: 'https://qumet.now.sh/public/icon2.png',
     twaccount: '@qumet',
-    icon: './public/icon.png'
+    icon: 'https://qumet.now.sh/public/icon.png'
   });
 });
 
